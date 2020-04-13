@@ -4,17 +4,13 @@ const jwt = require('jsonwebtoken');
 const { SECRET_KEY } = require('../config');
 
 module.exports = (context) => {
-  // context = { ... headers }
-  const authHeader = context.event.headers.authorization;
-  //context.event.header.authorization;
-  //context.req.header.authorization;
-  //context.req.headers.authorization;
-  //context.event.headers.authorization;
+  context = { ... headers }
+  const authHeader = context.req.headers.authorization;
+  
   if (authHeader) {
     // Bearer ....
-    const token = event.headers.authorization || '';
-    // const token = req.headers['authorization'];
-    //authHeader.split('Bearer ')[1];
+    const token = req.headers.authorization || '';
+   
     if (token) {
       try {
         const user = jwt.verify(token, SECRET_KEY);
