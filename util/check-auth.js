@@ -12,7 +12,8 @@ module.exports = (context) => {
   //context.event.headers.authorization;
   if (authHeader) {
     // Bearer ....
-    const token = req.headers['authorization'];
+    const token = req.headers.authorization || '';
+    // const token = req.headers['authorization'];
     //authHeader.split('Bearer ')[1];
     if (token) {
       try {
