@@ -5,13 +5,15 @@ const { SECRET_KEY } = require('../config');
 
 module.exports = (context) => {
   // context = { ... headers }
-  const authHeader = context.event.headers.authorization;
+  const authHeader = context.req.headers.authorization;
   //context.event.header.authorization;
   //context.req.header.authorization;
   //context.req.headers.authorization;
+  //context.event.headers.authorization;
   if (authHeader) {
     // Bearer ....
-    const token = authHeader.split('Bearer ')[1];
+    const token = req.headers['authorization'];
+    //authHeader.split('Bearer ')[1];
     if (token) {
       try {
         const user = jwt.verify(token, SECRET_KEY);
