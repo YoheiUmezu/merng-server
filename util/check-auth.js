@@ -5,7 +5,8 @@ const { SECRET_KEY } = require('../config');
 
 module.exports = (context) => {
   // context = { ... headers }
-  const authHeader = context.req.headers.authorization;
+  const authHeader = context.req.header.authorization;
+  //context.req.headers.authorization;
   if (authHeader) {
     // Bearer ....
     const token = authHeader.split('Bearer ')[1];
